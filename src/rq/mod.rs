@@ -1,3 +1,4 @@
+#![allow(dead_code)]
 pub mod encoding;
 pub mod modq;
 pub mod vector;
@@ -74,7 +75,7 @@ pub fn mult(h: &mut [i16; 761], f: [i16; 761], g: [i8; 761]){
         }
         fg[i] = r;
     }
-    for i in (761..(761*2) -1).rev(){
+    for i in (761..(761*2)-1).rev(){
         fg[i-761] = modq::sum(fg[i-761], fg[i]);
         fg[i-761+1] = modq::sum(fg[i-761+1], fg[i]);
     }
