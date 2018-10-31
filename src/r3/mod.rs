@@ -68,7 +68,7 @@ pub fn mult(h: &mut [i8; 761], f: [i8; 761], g: [i8; 761]){
         }
         fg[i] = r;
     }
-    for i in ((761*2-1)..=761).rev(){
+    for i in (761..(761*2)).rev(){
         fg[i-761] = mod3::sum(fg[i-761], fg[i]);
         fg[i-761+1] = mod3::sum(fg[i-761+1], fg[i]);
     }
