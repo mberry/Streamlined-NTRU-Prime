@@ -5,6 +5,7 @@ pub mod rq;
 
 pub use rq::encoding;
 pub use r3::mod3;
+use rq::modq;
 
 
 #[cfg(test)]

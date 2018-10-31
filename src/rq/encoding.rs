@@ -1,4 +1,4 @@
-
+use modq;
 
 pub fn encode(f: [i16; 761]) -> [u8; 1218]{
     const QSHIFT: i32 = 2295;
@@ -189,9 +189,9 @@ pub fn decode_rounded(c: &[u8])-> [i16; 761] {
 		c0 += c1 << 8;
 		f0 = c0;
 
-		f[k+0] = modq.Freeze((f0*3 + Q - QSHIFT) as i32);
-		f[k+1] = modq.Freeze((f1*3 + Q - QSHIFT) as i32);
-		f[k+2] = modq.Freeze((f2*3 + Q - QSHIFT) as i32);
+		f[k+0] = modq::freeze((f0*3 + Q - QSHIFT) as i32);
+		f[k+1] = modq::freeze((f1*3 + Q - QSHIFT) as i32);
+		f[k+2] = modq::freeze((f2*3 + Q - QSHIFT) as i32);
 		k += 3;
 	}
 
@@ -205,8 +205,8 @@ pub fn decode_rounded(c: &[u8])-> [i16; 761] {
 	c0 += c1 << 8;
 	f0 = c0;
 
-	f[759] = modq.Freeze((f0*3 + Q - QSHIFT) as i32);
-	f[760] = modq.Freeze((f1*3 + Q - QSHIFT) as i32);
+	f[759] = modq::freeze((f0*3 + Q - QSHIFT) as i32);
+	f[760] = modq::freeze((f1*3 + Q - QSHIFT) as i32);
 
 	f
 }
