@@ -1,6 +1,6 @@
 use modq;
 
-pub fn swap(x: &mut[i16], y: &mut[i16], bytes: usize, mask isize){
+pub fn swap(x: &mut[i16], y: &mut[i16], bytes: usize, mask: isize){
     let c = mask as i16;
     for i in 0..bytes{
         let t = c & (x[i] ^ y[i]);
