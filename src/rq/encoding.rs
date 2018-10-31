@@ -1,4 +1,4 @@
-use rQ::modQ;
+
 
 pub fn encode(f: [i16; 761]) -> [u8; 1218]{
     const QSHIFT: i32 = 2295;
@@ -101,18 +101,18 @@ pub fn decode(c : &[u8])-> [i16; 761]{
 		c0 += c1 << 8;
         f0 = c0;
 
-        f[k] = modQ::freeze((f0 + Q - QSHIFT) as i32);
-        f[k+1] = modQ::freeze((f1 + Q - QSHIFT) as i32);
-        f[k+2] = modQ::freeze((f2 + Q - QSHIFT) as i32);
-        f[k+3] = modQ::freeze((f3 + Q - QSHIFT) as i32);
-        f[k+4] = modQ::freeze((f4 + Q - QSHIFT) as i32);
+        f[k] = modq::freeze((f0 + Q - QSHIFT) as i32);
+        f[k+1] = modq::freeze((f1 + Q - QSHIFT) as i32);
+        f[k+2] = modq::freeze((f2 + Q - QSHIFT) as i32);
+        f[k+3] = modq::freeze((f3 + Q - QSHIFT) as i32);
+        f[k+4] = modq::freeze((f4 + Q - QSHIFT) as i32);
         k += 5;
     }
 
     c0 = c[1216] as u32;
     c1 = c[1217] as u32;
     c0 += c1 << 8;
-    f[760] = modQ::freeze((c0 + Q - QSHIFT) as i32);
+    f[760] = modq::freeze((c0 + Q - QSHIFT) as i32);
     f
 }
 
@@ -189,9 +189,9 @@ pub fn decode_rounded(c: &[u8])-> [i16; 761] {
 		c0 += c1 << 8;
 		f0 = c0;
 
-		f[k+0] = modQ.Freeze((f0*3 + Q - QSHIFT) as i32);
-		f[k+1] = modQ.Freeze((f1*3 + Q - QSHIFT) as i32);
-		f[k+2] = modQ.Freeze((f2*3 + Q - QSHIFT) as i32);
+		f[k+0] = modq.Freeze((f0*3 + Q - QSHIFT) as i32);
+		f[k+1] = modq.Freeze((f1*3 + Q - QSHIFT) as i32);
+		f[k+2] = modq.Freeze((f2*3 + Q - QSHIFT) as i32);
 		k += 3;
 	}
 
@@ -205,8 +205,8 @@ pub fn decode_rounded(c: &[u8])-> [i16; 761] {
 	c0 += c1 << 8;
 	f0 = c0;
 
-	f[759] = modQ.Freeze((f0*3 + Q - QSHIFT) as i32);
-	f[760] = modQ.Freeze((f1*3 + Q - QSHIFT) as i32);
+	f[759] = modq.Freeze((f0*3 + Q - QSHIFT) as i32);
+	f[760] = modq.Freeze((f1*3 + Q - QSHIFT) as i32);
 
 	f
 }
