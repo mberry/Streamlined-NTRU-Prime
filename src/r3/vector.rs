@@ -27,7 +27,7 @@ pub fn minus_product(z: &mut[i8], n: usize, y: &[i8], c :i8){
 }
 
 pub fn shift(z: &mut[i8], n :usize){
-    for i in (n-1..0).rev(){
+    for i in (0..n-1).rev(){
         z[i] = z[i-1];
     }
     z[0] = 0;
