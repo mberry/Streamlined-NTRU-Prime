@@ -52,6 +52,30 @@ fn reciprocal(mut r: [i8; 761], s: [i8; 761])-> isize{
     smaller_mask(0, d)
 }
 
+pub fn mult(h: &mut [i8; 761], f: [i8; 761], g: [i8; 761]){
+    let mut fg = [0i8; 761*2 -1];
+    for i in 0..761{
+        let mut r = 0i8;
+        for j in 0..i {
+            r = mod3::plus_product(r, f[j], g[i-j]);
+        }
+        fg[i] = r;
+    }
+    for i in 761..(761*2-1){
+        let mut r = 0i8;
+        for j in (i-761+1)..761{
+            r = mod3::plus_product(r, f[j], g[i-j])
+        }
+        fg[i] = r;
+    }
+    for i in ((761*2-1)..=761).rev(){
+        fg[i-761] = mod3::sum(fg[i-761], fg[i]);
+        fg[i-761+1] = mod3::sum(fg[i-761+1], fg[i]);
+    }
+    
+    h[..761].clone_from_slice(&fg[..761]);
+}
+
 
 #[test]
 fn name() {
