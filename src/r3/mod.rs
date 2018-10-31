@@ -4,7 +4,7 @@ pub mod vector;
 
 // swapInt swaps x and y if mask is -1. If mask is 0, x and y retain
 // their original values.
-fn swap_int(mut x : isize, mut y :isize, mask: isize){
+fn swap_int(mut x : isize, mut y : isize, mask: isize){
     let t = mask & (x ^ y);
     x ^= t;
     y ^= t;
@@ -72,7 +72,7 @@ pub fn mult(h: &mut [i8; 761], f: [i8; 761], g: [i8; 761]){
         fg[i-761] = mod3::sum(fg[i-761], fg[i]);
         fg[i-761+1] = mod3::sum(fg[i-761+1], fg[i]);
     }
-    
+
     h[..761].clone_from_slice(&fg[..761]);
 }
 
