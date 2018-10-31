@@ -1,4 +1,4 @@
-
+use rq::modq;
 
 pub fn encode(f: [i16; 761]) -> [u8; 1218]{
     const QSHIFT: i32 = 2295;
@@ -68,13 +68,13 @@ pub fn decode(c : &[u8])-> [i16; 761]{
     let mut c6 = 0u32;
     let mut c7 = 0u32;
 
-    let f = [0i16; 761];
+    let mut f = [0i16; 761];
 
     let mut j = 0;
     let mut k = 0;
 
     for i in 0..152{
-        c0 = c[j+0] as u32;
+        c0 = c[j] as u32;
         c1 = c[j+1] as u32;
         c2 = c[j+2] as u32;
         c3 = c[j+3] as u32;
@@ -101,9 +101,17 @@ pub fn decode(c : &[u8])-> [i16; 761]{
 		c0 += c1 << 8;
         f0 = c0;
 
-
+        f[k] = modq::freeze((f0 + Q - QSHIFT) as i32);
+        f[k+1] = modq::freeze((f1 + Q - QSHIFT) as i32);
+        f[k+2] = modq::freeze((f2 + Q - QSHIFT) as i32);
+        f[k+3] = modq::freeze((f3 + Q - QSHIFT) as i32);
+        f[k+4] = modq::freeze((f4 + Q - QSHIFT) as i32);
+        k += 5;
     }
 
-
-    [0i16; 761]
+    c0 = c[1216] as u32;
+    c1 = c[1217] as u32;
+    c0 += c1 << 8;
+    f[760] = modq::freeze((c0 + Q - QSHIFT) as i32);
+    f
 }
