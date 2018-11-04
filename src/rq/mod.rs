@@ -10,7 +10,9 @@ fn swap_int(mut x : isize, mut y : isize, mask: isize){
 }
 
 fn smaller_mask(x: isize, y: isize) -> isize{
-    (x-y) >> 31
+    //(x-y) >> 31
+    if y > x {-1}
+    else {0}
 }
 
 fn reciprocal3(mut r: [i16; 761], s: [i8; 761])-> isize{
@@ -51,7 +53,7 @@ fn reciprocal3(mut r: [i16; 761], s: [i8; 761])-> isize{
     smaller_mask(0, d)
 }
 
-// Check precedence of casting vs operators
+// TODO: Check precedence of casting vs operators
 pub fn round3(h: &mut[i16], f: [i16; 761]){
     for i in 0..761{
         let inner = (((f[i] + 2_295) as i32) + 32_768) >> 16;

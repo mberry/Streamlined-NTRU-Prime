@@ -1,7 +1,9 @@
 
+extern crate rand;
+
 pub mod r3;
 pub mod rq;
-
+pub mod zx;
 
 pub use rq::encoding;
 pub use r3::mod3;
