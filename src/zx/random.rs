@@ -1,4 +1,3 @@
-use rand;
 use rand::{Rng, ThreadRng};
 
 pub fn random_i32(rng: &mut ThreadRng)-> i32{
@@ -54,7 +53,25 @@ pub fn sort (x: &mut[i32], n: usize){
 
 pub fn random_small(g: &mut [i8; 761], rng: &mut ThreadRng){
     for i in 0..761{
-        let r = random_i32(&mut rng);
+        let r = random_i32(&mut *rng);
         g[i] = ((((1_073_741_823 & (r as u32) ) * 3) >> 30) as i8) - 1;
+    }
+}
+
+pub fn random_tsmall(f: &mut [i8; 761], rng: &mut ThreadRng){
+    let mut r = [0i32; 761];
+    for i in 0..761{
+        let x = random_i32(&mut *rng);
+        r[i] = x;
+    }
+    for i in 0..286{
+        r[i] &= -2;
+    }
+    for i in 286..761{
+        r[i] = (r[i] & -3) | 1
+    }
+    sort(&mut r, 761);
+    for i in 0..761{
+        f[i] = ((r[i] & 3) as i8) -1;
     }
 }
