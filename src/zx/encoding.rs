@@ -14,20 +14,20 @@ pub fn encode(f: [i8; 761])-> [u8; 191]{
     c
 }
 
-fn decode(c: &[u8])-> [i8; 761]{
+pub fn decode(c: &[u8])-> [i8; 761]{
     let mut f = [0i8; 761];
     let mut j = 0;
     for i in 0..190{
         let mut c0 = c[i];
-        f[j] = ((c0 & 3) - 1) as i8;
+        f[j] = ((c0 & 3) as i8) - 1 ;
         c0 >>= 2;
-        f[j+1] = ((c0 & 3) - 1) as i8;
+        f[j+1] = ((c0 & 3) as i8) - 1;
         c0 >>= 2;
-        f[j+2] = ((c0 & 3) - 1) as i8;
+        f[j+2] = ((c0 & 3) as i8) - 1;
         c0 >>= 2;
-        f[j+3] = ((c0 & 3) - 1) as i8;
+        f[j+3] = ((c0 & 3) as i8) - 1;
         j += 4;
     }
-    f[760] = ((c[190] & 3) -1 ) as i8;
+    f[760] = ((c[190] & 3) as i8) -1;
     f
 }

@@ -14,7 +14,7 @@ fn smaller_mask(x: isize, y: isize) -> isize{
     (x-y) >> 31
 }
 
-fn reciprocal(mut r: [i8; 761], s: [i8; 761])-> isize{
+pub fn reciprocal(mut r: [i8; 761], s: [i8; 761])-> isize{
     // f starts as the modulus of R3
     let mut f = [0i8; 761 + 1];
     f[0] = -1;

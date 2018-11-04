@@ -15,7 +15,7 @@ fn smaller_mask(x: isize, y: isize) -> isize{
     else {0}
 }
 
-fn reciprocal3(mut r: [i16; 761], s: [i8; 761])-> isize{
+pub fn reciprocal3(mut r: [i16; 761], s: [i8; 761])-> isize{
     const LOOPS: usize = 2*761 + 1;
     // f starts as the modulus of Rq
     let mut f = [0i16; 761 + 1];
@@ -54,7 +54,9 @@ fn reciprocal3(mut r: [i16; 761], s: [i8; 761])-> isize{
 }
 
 // TODO: Check precedence of casting vs operators
-pub fn round3(h: &mut[i16], f: [i16; 761]){
+
+pub fn round3(h: &mut[i16; 761]){
+    let f: [i16; 761] = *h;
     for i in 0..761{
         let inner = (((f[i] + 2_295) as i32) + 32_768) >> 16;
         let outer = 21_846 * inner * 3 - 2_295;
