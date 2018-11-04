@@ -105,8 +105,7 @@ pub fn decapsulate(cstr: [u8; CIPHER_TEXT_SIZE], sk: [u8; PRIVATE_KEY_SIZE])-> (
             w += 1
         }
     }
-    let mut ok = false;
-    if w == 286 {ok = true;}
+    let mut ok = w == 286;
 
     let h = rq::encoding::decode(&sk[(2 * 191)..]);
     let mut hr = [0i16; 761];
@@ -139,8 +138,8 @@ mod tests {
         let skvec = hex::decode(sk_hex).unwrap();
         let ctvec = hex::decode(ct_hex).unwrap();
 
-        let ct = vec_to_array(ctvec);
-        let sk = vta(skvec);
+        let ct = ct_vec_to_array(ctvec);
+        let sk = sk_vec_to_array(skvec);
 
         let (ss, ok) = decapsulate(ct, sk);
         let shex = hex::encode(ss);
@@ -148,15 +147,13 @@ mod tests {
 
     }
 
-    fn vec_to_array(v: Vec<u8>)-> [u8; 1047]{
-        let length = v.len();
+    fn ct_vec_to_array(v: Vec<u8>)-> [u8; 1047]{
         let mut arr = [0u8; 1047];
         arr.copy_from_slice(&v[..]);
         arr
     }
 
-    fn vta(v: Vec<u8>)-> [u8;1600]{
-    let length = v.len();
+    fn sk_vec_to_array(v: Vec<u8>)-> [u8;1600]{
     let mut arr = [0u8; 1600];
     arr.copy_from_slice(&v[..]);
     arr
