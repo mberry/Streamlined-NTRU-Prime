@@ -10,9 +10,7 @@ fn swap_int(mut x : isize, mut y : isize, mask: isize){
 }
 
 fn smaller_mask(x: isize, y: isize) -> isize{
-    //(x-y) >> 31
-    if y > x {-1}
-    else {0}
+    (x-y) >> 31
 }
 
 pub fn reciprocal3(mut r: [i16; 761], s: [i8; 761])-> isize{
