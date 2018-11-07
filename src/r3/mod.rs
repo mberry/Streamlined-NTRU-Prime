@@ -75,10 +75,3 @@ pub fn mult(h: &mut [i8; 761], f: [i8; 761], g: [i8; 761]){
 
     h[..761].clone_from_slice(&fg[..761]);
 }
-
-#[test]
-fn name() {
-    let a = swap_int(4, 1 , 1 );
-    let b = swap_int(4, 1 ,1 );
-    assert_eq!(a, b);
-}
