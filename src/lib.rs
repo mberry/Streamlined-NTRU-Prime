@@ -37,7 +37,7 @@ pub fn derive_key(f: [i8; 761], g: [i8;761], gr: [i8;761])-> ([u8; PUBLIC_KEY_SI
 
 pub fn generate_key()->([u8; PUBLIC_KEY_SIZE], [u8; PRIVATE_KEY_SIZE]){
     let mut rng = rand::thread_rng();
-    let (mut g, mut gr) = ([0i8; 761], [0i8; 761]);
+    let (mut g, gr) = ([0i8; 761], [0i8; 761]);
     loop {
         zx::random::random_small(&mut g, &mut rng);
         if r3::reciprocal(gr, g) == 0{
@@ -181,11 +181,17 @@ mod tests {
     }
 
     #[test]
+    #[ignore]
     fn encap_decap() {
         let (pk, sk) = generate_key();
         let (c, k) = encapsulate(pk);
         let (result, _) = decapsulate(c, sk);
         assert_eq!(result, k);
+    }
+
+    #[test]
+    fn gen() {
+    let (pk, sk) = generate_key();    
     }
 
     fn c_vec_to_array(v: Vec<u8>)-> [u8; 1047]{

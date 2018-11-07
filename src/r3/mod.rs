@@ -4,12 +4,15 @@ pub mod vector;
 
 // swapInt swaps x and y if mask is -1. If mask is 0, x and y retain
 // their original values.
-fn swap_int(mut x : isize, mut y : isize, mask: isize){
-    let t = mask & (x ^ y);
+fn swap_int(mut x : isize, mut y : isize, mask: isize)-> (isize, isize){
+    let xor = x ^ y;
+    let t = mask & xor;
     x ^= t;
     y ^= t;
+    (x, y)
 }
 
+// smallerMask compares x and y, returning -1 if y > x, and 0 otherwise
 fn smaller_mask(x: isize, y: isize) -> isize{
     (x-y) >> 31
 }
@@ -24,7 +27,7 @@ pub fn reciprocal(mut r: [i8; 761], s: [i8; 761])-> isize{
     // g starts as s
     let mut g = [0i8; 761 + 1];
     g[..761].clone_from_slice(&s[..761]);
-    let d = 761;
+    let mut d = 761;
     let mut e = 761;
     let loops = 2*761 + 1;
     let mut u = [0i8; 2*761+2]; // loops + 1
@@ -43,7 +46,7 @@ pub fn reciprocal(mut r: [i8; 761], s: [i8; 761])-> isize{
         // swap (e,d), (f,g), and (u,v) if d > e and lc(g) != 0
         e -= 1;
         let m = smaller_mask(e, d) & mod3::mask_set(g[761]);
-        swap_int(e, d, m);
+        (e, d) = swap_int(e, d, m);
         vector::swap(&mut f, &mut g, 761+1, m);
         vector::swap(&mut u, &mut v, loops+1, m);
     } 
