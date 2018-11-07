@@ -45,7 +45,9 @@ pub fn reciprocal(mut r: [i8; 761], s: [i8; 761])-> isize{
         // swap (e,d), (f,g), and (u,v) if d > e and lc(g) != 0
         e -= 1;
         let m = smaller_mask(e, d) & mod3::mask_set(g[761]);
-        let (e, d) = swap_int(e, d, m);
+        let (e_tmp, d_tmp) = swap_int(e, d, m);
+        e = e_tmp;
+        d = d_tmp;
         vector::swap(&mut f, &mut g, 761+1, m);
         vector::swap(&mut u, &mut v, loops+1, m);
     } 
