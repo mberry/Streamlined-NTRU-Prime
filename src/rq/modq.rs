@@ -17,15 +17,20 @@ use std::num::Wrapping;
 // 	out as i16
 // }
 
-pub fn freeze(a: i32)-> i16 {
-	let mut out = Wrapping(a);
-	let mut inner1 = Wrapping((228)) * out;
-	inner1 >>= 20;
-	out = out -  (Wrapping(4591) * inner1);
-	let b = a + 134217728;
-	let inner = Wrapping(58470) * Wrapping(b);
-	out = out -  (Wrapping(4591) * (inner >> 28));
-	out.0 as i16
+// pub fn freeze(a: i32)-> i16 {
+// 	let a_wrapped = Wrapping(a);
+// 	let b = Wrapping(4591);
+// 	let mut out = a_wrapped - (b * ((Wrapping(228) * a_wrapped) >> 20));
+// 	let inner = Wrapping(58470) * Wrapping(a) + Wrapping(134217728);
+// 	out = out - (b * (inner >> 28));
+// 	out.0 as i16
+// }
+
+pub fn freeze(a : i32)-> i16 {
+	let mut b = a;
+	b -= 4591 * ((228 * b) >> 20);
+	b -= 4591 * ((58470*b + 134217728) >> 28);
+	b as i16
 }
 
 pub fn product(a: i16, b: i16)-> i16{

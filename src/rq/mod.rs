@@ -53,12 +53,23 @@ pub fn reciprocal3(mut r: [i16; 761], s: [i8; 761])-> isize{
 
 // TODO: Check precedence of casting vs operators
 
+// pub fn round3(h: &mut[i16; 761]){
+//     let f: [i16; 761] = *h;
+//     for i in 0..761{
+//         let inner = (((f[i] + 2_295) as i32) + 32_768) >> 16;
+//         let outer = 21_846 * inner * 3 - 2_295;
+//         h[i] = outer as i16;
+//     }
+// }
+
+use std::num::Wrapping;
+
 pub fn round3(h: &mut[i16; 761]){
     let f: [i16; 761] = *h;
     for i in 0..761{
-        let inner = (((f[i] + 2_295) as i32) + 32_768) >> 16;
-        let outer = 21_846 * inner * 3 - 2_295;
-        h[i] = outer as i16;
+        let inner = Wrapping(21846) * Wrapping(f[i] as i32 + 2295) + Wrapping(32768);
+        let outer = (inner >> 16) * Wrapping(3) - Wrapping(2295);
+        h[i] = outer.0 as i16;
     }
 }
 
@@ -66,7 +77,7 @@ pub fn mult(h: &mut [i16; 761], f: [i16; 761], g: [i8; 761]){
     let mut fg = [0i16; 761*2 -1];
     for i in 0..761{
         let mut r = 0i16;
-        for j in 0..i {
+        for j in 0..=i {
             r = modq::plus_product(r, f[j], g[i-j] as i16);
         }
         fg[i] = r;

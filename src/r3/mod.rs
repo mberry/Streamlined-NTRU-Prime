@@ -60,7 +60,7 @@ pub fn mult(h: &mut [i8; 761], f: [i8; 761], g: [i8; 761]){
     let mut fg = [0i8; 761*2 -1];
     for i in 0..761{
         let mut r = 0i8;
-        for j in 0..i {
+        for j in 0..=i {
             r = mod3::plus_product(r, f[j], g[i-j]);
         }
         fg[i] = r;
@@ -73,8 +73,10 @@ pub fn mult(h: &mut [i8; 761], f: [i8; 761], g: [i8; 761]){
         fg[i] = r;
     }
     for i in (761..(761*2)-1).rev(){
-        fg[i-761] = mod3::sum(fg[i-761], fg[i]);
-        fg[i-761+1] = mod3::sum(fg[i-761+1], fg[i]);
+        let tmp1 = mod3::sum(fg[i-761], fg[i]);
+        fg[i-761] = tmp1;
+        let tmp2 =mod3::sum(fg[i-761+1], fg[i]);
+        fg[i-761+1] = tmp2;
     }
 
     h[..761].clone_from_slice(&fg[..761]);
