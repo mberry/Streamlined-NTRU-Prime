@@ -1,5 +1,3 @@
-#![allow(dead_code)]
-
 
 pub fn freeze(a: i32)-> i8{
     let b = a - (3 * ((10923 * a) >> 15));

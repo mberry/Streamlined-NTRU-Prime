@@ -6,9 +6,7 @@ pub mod vector;
 // their original values.
 fn swap_int(x : isize, y : isize, mask: isize)-> (isize, isize){
     let t = mask & (x ^ y);
-    let e = x ^ t;
-    let d = y ^ t;
-    (e, d)
+    (x ^ t, y ^ t)
 }
 
 // smallerMask compares x and y, returning -1 if y > x, and 0 otherwise

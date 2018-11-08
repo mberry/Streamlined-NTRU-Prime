@@ -1,30 +1,3 @@
-// pub fn freeze(a: i32) -> i16 {
-//     let b = a - (4_591 * ((228 * a) >> 20));
-//     let c = b - ((58_470 * b + 134_217_728) >> 28);
-//     c as i16
-// }
-use std::num::Wrapping;
-
-// pub fn freeze(a: i32)-> i16 {
-// 	println!("{}", a);
-// 	let mut out = a;
-// 	let mut inner1 = Wrapping(a) *;
-// 	inner1 = inner1 >> 20;
-// 	out -= 4591 * (inner1.0);
-// 	let b = a + 134217728;
-// 	let inner = Wrapping(58470) * Wrapping(b);
-// 	out -= 4591 * ((inner.0 ) >> 28);
-// 	out as i16
-// }
-
-// pub fn freeze(a: i32)-> i16 {
-// 	let a_wrapped = Wrapping(a);
-// 	let b = Wrapping(4591);
-// 	let mut out = a_wrapped - (b * ((Wrapping(228) * a_wrapped) >> 20));
-// 	let inner = Wrapping(58470) * Wrapping(a) + Wrapping(134217728);
-// 	out = out - (b * (inner >> 28));
-// 	out.0 as i16
-// }
 
 pub fn freeze(a : i32)-> i16 {
 	let mut b = a;

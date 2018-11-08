@@ -1,9 +1,5 @@
-#![allow(dead_code)]
 use mod3;
 
-
-// Swap swaps x and y if mask is -1. If mask is 0, x and y retain
-// their original values.
 pub fn swap(x: &mut[i8], y: &mut[i8], bytes: usize, mask: isize){
     let c = mask as i8;
     for i in 0..bytes{

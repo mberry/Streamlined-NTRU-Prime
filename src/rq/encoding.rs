@@ -207,6 +207,5 @@ pub fn decode_rounded(c: &[u8])-> [i16; 761] {
 
 	f[759] = modq::freeze((f0*3 + Q - QSHIFT) as i32);
 	f[760] = modq::freeze((f1*3 + Q - QSHIFT) as i32);
-
 	f
 }
