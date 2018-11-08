@@ -49,9 +49,8 @@ pub fn reciprocal3(r: &mut [i16; 761], s: [i8; 761])-> isize{
 pub fn round3(h: &mut[i16; 761]){
     let f: [i16; 761] = *h;
     for i in 0..761{
-        let inner = Wrapping(21846) * Wrapping(f[i] as i32 + 2295) + Wrapping(32768);
-        let outer = (inner >> 16) * Wrapping(3) - Wrapping(2295);
-        h[i] = outer.0 as i16;
+        let inner = 21846i32 * (f[i]+2295) as i32;
+        h[i] = (((inner +32768)>>16)*3 - 2295) as i16;
     }
 }
 
