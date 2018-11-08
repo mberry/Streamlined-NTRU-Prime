@@ -2,8 +2,6 @@ pub mod encoding;
 pub mod modq;
 pub mod vector;
 
-use std::num::Wrapping;
-
 fn swap_int(x : isize, y : isize, mask: isize)-> (isize, isize){
     let t = mask & (x ^ y);
     (x ^ t, y ^ t)
