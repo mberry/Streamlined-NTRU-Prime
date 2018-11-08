@@ -21,8 +21,8 @@ const CIPHER_TEXT_SIZE: usize = 1047;
 const SHARED_KEY_SIZE: usize = 32;
 
 pub fn derive_key(f: [i8; 761], g: [i8;761], gr: [i8;761])-> ([u8; PUBLIC_KEY_SIZE], [u8; PRIVATE_KEY_SIZE]){
-    let f3r = [0i16; 761];
-    rq::reciprocal3(f3r, f);
+    let mut f3r = [0i16; 761];
+    rq::reciprocal3(&mut f3r, f);
     let mut h = [0i16; 761];
     rq::mult(&mut h, f3r, g);
     let pk = rq::encoding::encode(h);

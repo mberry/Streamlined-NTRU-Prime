@@ -13,7 +13,7 @@ fn smaller_mask(x: isize, y: isize) -> isize{
     (x-y) >> 31
 }
 
-pub fn reciprocal3(mut r: [i16; 761], s: [i8; 761])-> isize{
+pub fn reciprocal3(r: &mut [i16; 761], s: [i8; 761])-> isize{
     const LOOPS: usize = 2*761 + 1;
     // f starts as the modulus of Rq
     let mut f = [0i16; 761 + 1];
@@ -47,7 +47,7 @@ pub fn reciprocal3(mut r: [i16; 761], s: [i8; 761])-> isize{
         vector::swap(&mut f, &mut g, 761+1, m);
         vector::swap(&mut u, &mut v, LOOPS+1, m);
     } 
-    vector::product(&mut r, 761, &u[761..], modq::reciprocal(f[761]));
+    vector::product(r, 761, &u[761..], modq::reciprocal(f[761]));
     smaller_mask(0, d)
 }
 
