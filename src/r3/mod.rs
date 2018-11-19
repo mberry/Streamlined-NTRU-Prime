@@ -14,7 +14,9 @@ fn smaller_mask(x: isize, y: isize) -> isize{
     (x-y) >> 31
 }
 
-pub fn reciprocal(r: &mut [i8; 761], s: [i8; 761])-> isize{
+pub fn reciprocal(s: [i8; 761])-> (isize, [i8; 761]){
+    let mut r = [0i8; 761];
+
     // f starts as the modulus of R3
     let mut f = [0i8; 761 + 1];
     f[0] = -1;
@@ -51,7 +53,7 @@ pub fn reciprocal(r: &mut [i8; 761], s: [i8; 761])-> isize{
     } 
 
     vector::product(&mut r, 761, &u[761..], mod3::reciprocal(f[761]));
-    smaller_mask(0, d)
+    (smaller_mask(0, d), r)
 }
 
 pub fn mult(h: &mut [i8; 761], f: [i8; 761], g: [i8; 761]){
