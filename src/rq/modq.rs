@@ -1,4 +1,3 @@
-
 pub fn freeze(a : i32)-> i16 {
 	let mut b = a;
 	b -= 4_591 * ((228 * b) >> 20);

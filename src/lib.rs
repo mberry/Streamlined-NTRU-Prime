@@ -4,14 +4,13 @@ extern crate sha2;
 #[macro_use]
 extern crate serde_derive;
 
-pub mod r3;
-pub mod rq;
-pub mod zx;
+mod r3;
+mod rq;
+mod zx;
 
 use rq::*;
-pub use rq::encoding;
-pub use r3::mod3;
-pub use sha2::{Sha512, Digest};
+use r3::mod3;
+use sha2::{Sha512, Digest};
 
 const PK_SIZE: usize = 1218; // Public Key
 const SK_SIZE: usize = 1600; // Private/Secret Key

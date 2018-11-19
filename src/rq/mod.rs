@@ -1,7 +1,6 @@
 pub mod encoding;
 pub mod modq;
-pub mod vector;
-
+mod vector;
 
 fn swap_int(x : isize, y : isize, mask: isize)-> (isize, isize){
     let t = mask & (x ^ y);
