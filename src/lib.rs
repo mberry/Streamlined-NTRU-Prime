@@ -1,8 +1,5 @@
 extern crate rand;
 extern crate sha2;
-#[cfg(feature="tests")]
-#[macro_use]
-extern crate serde_derive;
 
 mod r3;
 mod rq;
@@ -10,10 +7,10 @@ mod zx;
 
 use sha2::{Sha512, Digest};
 
-const PK_SIZE: usize = 1218; // Public Key
-const SK_SIZE: usize = 1600; // Private/Secret Key
-const CT_SIZE: usize = 1047; // Cipher Text
-const K_SIZE: usize = 32;    // Shared Key
+pub const PK_SIZE: usize = 1218; // Public Key
+pub const SK_SIZE: usize = 1600; // Private/Secret Key
+pub const CT_SIZE: usize = 1047; // Cipher Text
+pub const K_SIZE: usize = 32;    // Shared Key
 
 fn derive_key(f: [i8; 761], g: [i8;761], gr: [i8;761])-> ([u8; PK_SIZE], [u8; SK_SIZE]){
     let f3r = rq::reciprocal3(f);
