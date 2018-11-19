@@ -12,7 +12,7 @@ pub fn encode(f: [i16; 761]) -> [u8; 1218]{
 
     let mut j = 0;
     let mut k = 0;
-    for i in 0..152{
+    for _ in 0..152{
         f0 = (f[j+0] as i32 + QSHIFT) * 1;
         f1 = (f[j+1] as i32 + QSHIFT) * 3;
         f2 = (f[j+2] as i32 + QSHIFT) * 9;
@@ -125,8 +125,8 @@ pub fn encode_rounded(f: [i16; 761])-> [u8; 1015]{
     let mut j = 0;
     let mut k = 0;
 
-    for i in 0..253{
-        f0 = f[j+0] as i32 + QSHIFT;
+    for _ in 0..253{
+        f0 = f[j] as i32 + QSHIFT;
         f1 = f[j+1] as i32 + QSHIFT;
         f2 = f[j+2] as i32 + QSHIFT;
         j += 3;
@@ -138,7 +138,7 @@ pub fn encode_rounded(f: [i16; 761])-> [u8; 1015]{
 		f1 *= 3;
         f0 += f1 << 9;
 
-		c[k+0] = f0 as u8;
+		c[k] = f0 as u8;
 		f0 >>= 8;
 		c[k+1] = f0 as u8;
 		f0 >>= 8;
