@@ -8,9 +8,7 @@ pub mod tests{
     extern crate serde_json;
     extern crate hex;
     extern crate streamlined_ntru_prime as sntrup;
-    
 
-    use test::Bencher;
     use self::sntrup::*;
     use std::fs::File;
     

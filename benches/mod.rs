@@ -4,11 +4,10 @@
 #[cfg(feature="tests")]
 extern crate serde_derive;
 #[cfg(feature="tests")]
-extern crate test;
-extern crate streamlined_ntru_prime as sntrup;
-#[cfg(feature="tests")]
 extern crate serde_json;
 extern crate hex;
+extern crate test;
+extern crate streamlined_ntru_prime as sntrup;
 
 #[cfg(feature="tests")]
 use test::Bencher;
@@ -41,7 +40,6 @@ fn parse_kat_file()-> Vec<KAT>{
 #[derive(Deserialize)]
 struct KAT {
     c: String,
-    k: String,
     pk: String,
     sk: String
 }
