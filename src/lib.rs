@@ -1,7 +1,6 @@
 
 #[macro_use]
 extern crate serde_derive;
-extern crate core;
 extern crate rand;
 extern crate sha2;
 
@@ -14,24 +13,24 @@ pub use rq::encoding;
 pub use r3::mod3;
 pub use sha2::{Sha512, Digest};
 
-const PUBLIC_KEY_SIZE: usize = 1218;
-const PRIVATE_KEY_SIZE: usize = 1600;
-const CIPHER_TEXT_SIZE: usize = 1047;
-const SHARED_KEY_SIZE: usize = 32;
+const PK_SIZE: usize = 1218; // Public Key
+const SK_SIZE: usize = 1600; // Private/Secret Key
+const CT_SIZE: usize = 1047; // Cipher Text
+const K_SIZE: usize = 32;    // Shared Key
 
-pub fn derive_key(f: [i8; 761], g: [i8;761], gr: [i8;761])-> ([u8; PUBLIC_KEY_SIZE], [u8; PRIVATE_KEY_SIZE]){
+fn derive_key(f: [i8; 761], g: [i8;761], gr: [i8;761])-> ([u8; PK_SIZE], [u8; SK_SIZE]){
     let f3r = rq::reciprocal3(f);
     let mut h = [0i16; 761];
     rq::mult(&mut h, f3r, g);
     let pk = rq::encoding::encode(h);
-    let mut sk = [0u8; PRIVATE_KEY_SIZE];
+    let mut sk = [0u8; SK_SIZE];
     sk[..191].copy_from_slice(&zx::encoding::encode(f));
     sk[191..382].copy_from_slice(&zx::encoding::encode(gr));
     sk[382..].copy_from_slice(&pk);
     (pk, sk)
 }
 
-pub fn generate_key()->([u8; PUBLIC_KEY_SIZE], [u8; PRIVATE_KEY_SIZE]){
+pub fn generate_key()->([u8; PK_SIZE], [u8; SK_SIZE]){
     let mut rng = rand::thread_rng();
     let mut g = [0i8; 761];
     let gr = loop {
@@ -46,8 +45,8 @@ pub fn generate_key()->([u8; PUBLIC_KEY_SIZE], [u8; PRIVATE_KEY_SIZE]){
     derive_key(f, g, gr)
 }
 
-pub fn create_cipher(r: [i8; 761], pk :[u8; PUBLIC_KEY_SIZE])-> 
-    ([u8; CIPHER_TEXT_SIZE], [u8; SHARED_KEY_SIZE]){
+fn create_cipher(r: [i8; 761], pk :[u8; PK_SIZE])-> 
+    ([u8; CT_SIZE], [u8; K_SIZE]){
     let h = rq::encoding::decode(&pk);
     let mut c = [0i16; 761];
     rq::mult(&mut c, h ,r);
@@ -61,14 +60,14 @@ pub fn create_cipher(r: [i8; 761], pk :[u8; PUBLIC_KEY_SIZE])->
     (cstr, k)
 }
 
-pub fn encapsulate(pk : [u8; PUBLIC_KEY_SIZE])-> ([u8; CIPHER_TEXT_SIZE], [u8; SHARED_KEY_SIZE]){
+pub fn encapsulate(pk : [u8; PK_SIZE])-> ([u8; CT_SIZE], [u8; K_SIZE]){
     let mut r = [0i8; 761];
     let mut rng = rand::thread_rng();
     zx::random::random_tsmall(&mut r, &mut rng);   
     create_cipher(r, pk)
 }
 
-pub fn decapsulate(cstr: [u8; CIPHER_TEXT_SIZE], sk: [u8; PRIVATE_KEY_SIZE])-> ([u8; SHARED_KEY_SIZE], bool){
+pub fn decapsulate(cstr: [u8; CT_SIZE], sk: [u8; SK_SIZE])-> ([u8; K_SIZE], bool){
     let f = zx::encoding::decode(&sk[..191]);
     let c = rq::encoding::decode_rounded(&cstr[32..]);
     let mut t = [0i16; 761];
@@ -151,7 +150,7 @@ mod tests {
     }
 
     #[test]
-    fn keygen_test() {
+    fn keygentest() {
         for _ in 0..10{
             let (pk, sk) = generate_key();
             let (c, k) = encapsulate(pk);
