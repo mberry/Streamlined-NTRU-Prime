@@ -1,4 +1,4 @@
-use modq;
+use rq::modq;
 
 pub fn encode(f: [i16; 761]) -> [u8; 1218]{
     const QSHIFT: i32 = 2295;

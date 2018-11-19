@@ -1,6 +1,6 @@
-
 extern crate rand;
 extern crate sha2;
+#[cfg(feature="testing")]
 #[macro_use]
 extern crate serde_derive;
 
@@ -8,8 +8,6 @@ mod r3;
 mod rq;
 mod zx;
 
-use rq::*;
-use r3::mod3;
 use sha2::{Sha512, Digest};
 
 const PK_SIZE: usize = 1218; // Public Key
@@ -73,7 +71,7 @@ pub fn decapsulate(cstr: [u8; CT_SIZE], sk: [u8; SK_SIZE])-> ([u8; K_SIZE], bool
     rq::mult(&mut t, c ,f);
     let mut t3 = [0i8;761];
     for i in 0..761{
-        t3[i] = mod3::freeze(modq::freeze(3 * t[i] as i32) as i32);
+        t3[i] = r3::mod3::freeze(rq::modq::freeze(3 * t[i] as i32) as i32);
     }
     let gr = zx::encoding::decode(&sk[191..]);
     let mut r = [0i8; 761];
@@ -101,6 +99,7 @@ pub fn decapsulate(cstr: [u8; CT_SIZE], sk: [u8; SK_SIZE])-> ([u8; K_SIZE], bool
 }
 
 #[cfg(test)]
+#[cfg(feature="testing")]
 mod tests {
     extern crate serde_json;
     extern crate hex;

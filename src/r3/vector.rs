@@ -1,4 +1,4 @@
-use mod3;
+use r3::mod3;
 
 pub fn swap(x: &mut[i8], y: &mut[i8], bytes: usize, mask: isize){
     let c = mask as i8;

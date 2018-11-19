@@ -1,4 +1,4 @@
-use modq;
+use rq::modq;
 
 pub fn swap(x: &mut[i16], y: &mut[i16], bytes: usize, mask: isize){
     let c = mask as i16;
