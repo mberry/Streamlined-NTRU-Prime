@@ -2,6 +2,7 @@ pub mod encoding;
 pub mod modq;
 pub mod vector;
 
+
 fn swap_int(x : isize, y : isize, mask: isize)-> (isize, isize){
     let t = mask & (x ^ y);
     (x ^ t, y ^ t)
@@ -11,9 +12,9 @@ fn smaller_mask(x: isize, y: isize) -> isize{
     (x-y) >> 31
 }
 
-pub fn reciprocal3(r: &mut [i16; 761], s: [i8; 761])-> isize{
+pub fn reciprocal3(s: [i8; 761])-> [i16; 761]{
     const LOOPS: usize = 2*761 + 1;
-
+    let mut r = [0i16; 761];
     let mut f = [0i16; 761 + 1];
     f[0] = -1;
     f[1] = -1;
@@ -36,12 +37,15 @@ pub fn reciprocal3(r: &mut [i16; 761], s: [i8; 761])-> isize{
         vector::shift(&mut v, LOOPS+1);
         e -= 1;
         let m = smaller_mask(e, d) & modq::mask_set(g[761]);
-        let (e, d) = swap_int(e, d, m);
+        let (e_tmp, d_tmp) = swap_int(e, d, m);
+        e = e_tmp;
+        d = d_tmp;
         vector::swap(&mut f, &mut g, 761+1, m);
         vector::swap(&mut u, &mut v, LOOPS+1, m);
-    } 
-    vector::product(r, 761, &u[761..], modq::reciprocal(f[761]));
-    smaller_mask(0, d)
+    }
+    vector::product(&mut r, 761, &u[761..], modq::reciprocal(f[761]));
+    smaller_mask(0, d);
+    r
 }
 
 pub fn round3(h: &mut[i16; 761]){
