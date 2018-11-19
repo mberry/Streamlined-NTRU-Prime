@@ -1,16 +1,14 @@
-#![feature(test)]
-
 #[macro_use]
 #[cfg(feature="tests")]
 extern crate serde_derive;
 
 #[cfg(test)]
 #[cfg(feature="tests")]
-mod tests{
+pub mod tests{
     extern crate serde_json;
     extern crate hex;
     extern crate streamlined_ntru_prime as sntrup;
-    extern crate test;
+    
 
     use test::Bencher;
     use self::sntrup::*;
@@ -69,23 +67,6 @@ mod tests{
             let (result, _) = decapsulate(c, sk);
             assert_eq!(result, k);
         }
-    }
-
-    #[bench]
-    fn key_gen_bench(b: &mut Bencher){
-        b.iter(|| generate_key());
-    }
-
-    #[bench]
-    fn encapsulate_bench(b: &mut Bencher){
-        let kat = &parse_kat_file()[0];
-        b.iter(|| encapsulate(pk_to_arr(&kat.pk)));
-    }
-
-    #[bench]
-    fn decapsulate_bench(b: &mut Bencher){
-        let kat = &parse_kat_file()[2];
-        b.iter(|| decapsulate(ct_to_arr(&kat.c), sk_to_arr(&kat.sk)));
     }
 
     fn ct_to_arr(s: &str)-> [u8; CT_SIZE]{
