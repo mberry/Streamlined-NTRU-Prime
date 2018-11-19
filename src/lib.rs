@@ -103,7 +103,6 @@ pub fn decapsulate(cstr: [u8; CT_SIZE], sk: [u8; SK_SIZE])-> ([u8; K_SIZE], bool
 #[cfg(test)]
 mod tests {
     extern crate serde_json;
-    extern crate serde;
     extern crate hex;
 
     use std::fs::File;
