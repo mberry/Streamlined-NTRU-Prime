@@ -1,5 +1,4 @@
 
-#![cfg_attr(feature = "cargo-clippy", allow(cast_lossless))]
 extern crate rand;
 extern crate sha2;
 #[macro_use]

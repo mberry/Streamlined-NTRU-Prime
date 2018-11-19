@@ -69,7 +69,6 @@ pub fn decode(c : &[u8])-> [i16; 761]{
     let mut c7 = 0u32;
 
     let mut f = [0i16; 761];
-
     let mut j = 0;
     let mut k = 0;
 
