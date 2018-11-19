@@ -1,8 +1,9 @@
 
-#[macro_use]
-extern crate serde_derive;
+#![cfg_attr(feature = "cargo-clippy", allow(cast_lossless))]
 extern crate rand;
 extern crate sha2;
+#[macro_use]
+extern crate serde_derive;
 
 pub mod r3;
 pub mod rq;
@@ -103,11 +104,13 @@ pub fn decapsulate(cstr: [u8; CT_SIZE], sk: [u8; SK_SIZE])-> ([u8; K_SIZE], bool
 
 #[cfg(test)]
 mod tests {
-    extern crate hex;
-    extern crate serde;
     extern crate serde_json;
-    use super::*;
+    extern crate serde;
+    extern crate hex;
+
     use std::fs::File;
+    use super::*;
+
 
     #[derive(Deserialize)]
     struct KAT {
