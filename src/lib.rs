@@ -1,6 +1,6 @@
 extern crate rand;
 extern crate sha2;
-#[cfg(feature="testing")]
+#[cfg(feature="tests")]
 #[macro_use]
 extern crate serde_derive;
 
@@ -99,7 +99,7 @@ pub fn decapsulate(cstr: [u8; CT_SIZE], sk: [u8; SK_SIZE])-> ([u8; K_SIZE], bool
 }
 
 #[cfg(test)]
-#[cfg(feature="testing")]
+#[cfg(feature="tests")]
 mod tests {
     extern crate serde_json;
     extern crate hex;
