@@ -1,9 +1,9 @@
 #[macro_use]
-#[cfg(feature="tests")]
+#[cfg(feature="testing")]
 extern crate serde_derive;
 
 #[cfg(test)]
-#[cfg(feature="tests")]
+#[cfg(feature="testing")]
 pub mod tests{
     extern crate serde_json;
     extern crate hex;
