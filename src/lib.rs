@@ -12,6 +12,10 @@ pub const SK_SIZE: usize = 1600; // Private/Secret Key
 pub const CT_SIZE: usize = 1047; // Cipher Text
 pub const K_SIZE: usize = 32;    // Shared Key
 
+pub const P : usize = 761;
+pub const Q : usize = 4591;
+pub const W: usize = 286;
+
 fn derive_key(f: [i8; 761], g: [i8;761], gr: [i8;761])-> ([u8; PK_SIZE], [u8; SK_SIZE]){
     let f3r = rq::reciprocal3(f);
     let mut h = [0i16; 761];
