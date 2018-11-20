@@ -1,15 +1,15 @@
 #![feature(test)]
 
 #[macro_use]
-#[cfg(feature="tests")]
+#[cfg(feature="testing")]
 extern crate serde_derive;
-#[cfg(feature="tests")]
+#[cfg(feature="testing")]
 extern crate serde_json;
 extern crate hex;
 extern crate test;
 extern crate streamlined_ntru_prime as sntrup;
 
-#[cfg(feature="tests")]
+#[cfg(feature="testing")]
 use test::Bencher;
 use self::sntrup::*;
 use std::fs::File;
