@@ -2,6 +2,12 @@
 name = "streamlined_ntru_prime"
 version = "0.1.0"
 authors = ["MitchellBerry <mitchellberry@protonmail.com>"]
+license = "Apache-2.0"
+keywords = ["cryptography", "hashing", "bcrypt", "post-quantum"]
+description = "Rust implementation of the Streamline NTRU Prime algorithm" 
+repository = "https://github.com/MitchellBerry/streamlined_ntru_prime"
+documentation = "https://docs.rs/crate/streamlined_ntru_prime/0.1.0"
+categories = ["algorithms", "cryptography"]
 
 [dependencies]
 rand = "0.5.5"
@@ -13,4 +19,4 @@ serde_derive = {version = "1.0.80", optional = true}
 
 [features]
 default = []
-tests = ["serde", "serde_json", "serde_derive"]
+testing = ["serde", "serde_json", "serde_derive"]
