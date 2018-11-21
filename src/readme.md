@@ -68,7 +68,7 @@ Full output of generated and expected values can be shown optionally.
 cargo test -- --nocapture --features testing
 ```
 
-A json file of 100 KATs was generated from the sage implementation found [here](src/tests/kat-generator.sage) (additional code added to generate json, original [here]()) and used to test encapsulation/decapsulation. Key generation is tested separately.
+A json file of 100 KATs was generated from the sage implementation found [here](src/tests/kat-generator.sage).
 
 
 ## Warnings
