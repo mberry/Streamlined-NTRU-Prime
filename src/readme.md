@@ -54,7 +54,7 @@ let shared_secret = decapsulate(cipher_text, private_key).expect("Decapsulation 
 
 ## Testing 
 ---
-To reduce compile times and size both tests and benches are an optional feature. 
+To reduce compile time/size tests and benches are an optional feature.
 ```shell
 # Testing
 cargo test --features testing
@@ -63,12 +63,12 @@ cargo test --features testing
 cargo bench --features testing
 ```
 
-Full output and expected values can be shown optionally with cargo's nocapture argument. 
+Full output of generated and expected values can be shown optionally.
 ```shell
-cargo test -- --nocapture -- feature testing
+cargo test -- --nocapture --features testing
 ```
 
-A json file of 100 KATs was generated from the sage implementation found [here](src/tests/kat-generator.sage) and used to test encapsulation/decapsulation. Key generation is tested separately.
+A json file of 100 KATs was generated from the sage implementation found [here](src/tests/kat-generator.sage).
 
 
 ## Warnings
