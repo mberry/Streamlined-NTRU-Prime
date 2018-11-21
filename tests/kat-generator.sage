@@ -102,14 +102,15 @@ def decapsulate(cstr,sk):
   if fullkey[:32] != confirm: return False
   return fullkey[32:]
 
-### Write To File ###
+### Additional code ###
+### Write To File  ###
 import json
 
 def byte2hex(bytestr):
     return ''.join( ["%02X" % ord(x) for x in bytestr]).strip()
 
 kat_list = []
-for i in range(10):
+for i in range(100):
   pk,sk = keygen()
   c,k = encapsulate(pk)
   assert decapsulate(c,sk) == k
