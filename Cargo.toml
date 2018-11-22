@@ -8,6 +8,7 @@ description = "Rust implementation of the Streamline NTRU Prime algorithm"
 repository = "https://github.com/MitchellBerry/streamlined-ntru-prime"
 documentation = "https://docs.rs/crate/streamlined-ntru-prime/0.1.0"
 categories = ["algorithms", "cryptography"]
+readme = "readme.md"
 
 [dependencies]
 rand = "0.6.0"
