@@ -73,7 +73,7 @@ cargo test --features testing -- --nocapture
 
 A json file of 100 KATs was generated from the sage implementation found [here](src/tests/kat-generator.sage).
 
-####Current Benchmarks
+#### Current Benchmarks
 
 Tested on an  Intel i7-7500U @ 2.7GHz
 ```shell
