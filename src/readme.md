@@ -43,13 +43,13 @@ streamlined_ntru_prime = "0.1.0"
 use streamlined_ntru_prime::*;
 
 // Key Generation
-let (public_key, private_key) = generate_key().expect("Key generation error");
+let (public_key, private_key) = generate_key();
 
 // Encapsulation
-let (cipher_text, shared_secret) = encapsulate(public_key).expect("Encapsulation error");
+let (cipher_text, shared_secret) = encapsulate(public_key);
 
 // Decapsulation
-let shared_secret = decapsulate(cipher_text, private_key).expect("Decapsulation error")
+let shared_secret = decapsulate(cipher_text, private_key).expect("Decapsulation failure")
 ```
 
 ## Testing 
