@@ -34,7 +34,7 @@ fn decapsulate_bench(b: &mut Bencher){
 
 fn parse_kat_file()-> Vec<KAT>{
     let path = "tests/kat.json";
-    let f = File::open(path).expect(&format!("kat.json not found: {}", path));
+    let f = File::open(path).expect(&format!("kat file not found @ {}", path));
     serde_json::from_reader(f).expect("Error reading kat.json")
 }
 
