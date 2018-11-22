@@ -5,6 +5,7 @@
 extern crate serde_derive;
 #[cfg(feature="testing")]
 extern crate serde_json;
+#[cfg(feature="testing")]
 extern crate hex;
 extern crate test;
 extern crate streamlined_ntru_prime as sntrup;
