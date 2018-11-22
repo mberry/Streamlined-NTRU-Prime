@@ -57,8 +57,11 @@ pub fn encapsulate(pk : [u8; PK_SIZE])-> ([u8; CT_SIZE], [u8; K_SIZE]){
 /// # Example
 /// ```
 /// use streamlined_ntru_prime::*;
-/// let (cipher_text, private_key) = ([0u8; CT_SIZE], [u8; PKSIZE]);
-/// let shared_secret = decapsulate(cipher_text, private_key).expect("Decapsulation error");
+/// let (public_key, private_key) = generate_key();
+/// let (cipher_text, shared_secret_encap) = encapsulate(public_key);
+/// let shared_secret_decap = decapsulate(cipher_text, private_key)
+///                             .expect("Decapsulation error");
+/// assert_eq!(shared_secret_encap, shared_secret_decap);
 /// ```
 pub fn decapsulate(cstr: [u8; CT_SIZE], sk: [u8; SK_SIZE])-> Result<[u8; K_SIZE], bool>{
     let f = zx::encoding::decode(&sk[..191]);
