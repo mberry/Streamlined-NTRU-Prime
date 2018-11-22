@@ -32,7 +32,7 @@ pub mod tests{
         for (i, kat) in kats.into_iter().enumerate(){
             let ct = ct_to_arr(&kat.c);
             let sk = sk_to_arr(&kat.sk);
-            let (k, _) = decapsulate(ct, sk);
+            let k = decapsulate(ct, sk).unwrap();
             println!("Decap KAT #: {}", i+1);
             println!("c: {}\n", kat.c);
             println!("sk: {}\n", kat.sk);
@@ -49,7 +49,7 @@ pub mod tests{
             let pk = pk_to_arr(&kat.pk); 
             let (ct, k) = encapsulate(pk);
             let sk = sk_to_arr(&kat.sk); 
-            let (expected_k, _) = decapsulate(ct, sk);
+            let expected_k = decapsulate(ct, sk).unwrap();
             println!("Encap KAT #: {}", i+1);
             println!("encapped k: {}", hex::encode(k));
             println!("expected k: {}\n", hex::encode(expected_k));
@@ -62,7 +62,7 @@ pub mod tests{
         for _ in 0..5{
             let (pk, sk) = generate_key();
             let (c, k) = encapsulate(pk);
-            let (result, _) = decapsulate(c, sk);
+            let result = decapsulate(c, sk).unwrap();
             assert_eq!(result, k);
         }
     }

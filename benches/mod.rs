@@ -28,7 +28,7 @@ fn encapsulate_bench(b: &mut Bencher){
 #[bench]
 fn decapsulate_bench(b: &mut Bencher){
     let kat = &parse_kat_file()[2];
-    b.iter(|| decapsulate(ct_to_arr(&kat.c), sk_to_arr(&kat.sk)));
+    b.iter(|| decapsulate(ct_to_arr(&kat.c), sk_to_arr(&kat.sk)).unwrap());
 }
 
 fn parse_kat_file()-> Vec<KAT>{
