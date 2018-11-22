@@ -41,7 +41,7 @@ pub fn generate_key()->([u8; PK_SIZE], [u8; SK_SIZE]){
 /// Returns a ciphertext and shared key
 /// # Example
 /// ```
-/// /// use streamlined_ntru_prime::*;
+/// use streamlined_ntru_prime::*;
 /// let public_key = [0u8; PK_SIZE];
 /// let (cipher_text, shared_secret) = encapsulate(public_key);
 /// ```
@@ -56,7 +56,7 @@ pub fn encapsulate(pk : [u8; PK_SIZE])-> ([u8; CT_SIZE], [u8; K_SIZE]){
 /// Returns a result containing the shared key.
 /// # Example
 /// ```
-/// /// use streamlined_ntru_prime::*;
+/// use streamlined_ntru_prime::*;
 /// let (cipher_text, private_key) = ([0u8; CT_SIZE], [u8; PKSIZE]);
 /// let shared_secret = decapsulate(cipher_text, private_key).expect("Decapsulation error");
 /// ```
