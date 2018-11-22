@@ -34,7 +34,8 @@ pub mod encoding {
 }
 
 pub mod random {
-    use rand::{Rng, ThreadRng};
+    //use rand::{Rng, ThreadRng};
+    use rand::prelude::*;
 
     pub fn random_i32(rng: &mut ThreadRng)-> i32{
         rng.gen::<i32>()
