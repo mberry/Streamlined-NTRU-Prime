@@ -1,5 +1,5 @@
 [package]
-name = "streamlined_ntru_prime"
+name = "streamlined-ntru-prime"
 version = "0.1.0"
 authors = ["MitchellBerry <mitchellberry@protonmail.com>"]
 license = "Apache-2.0"
