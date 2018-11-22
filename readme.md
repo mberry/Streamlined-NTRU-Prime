@@ -1,5 +1,4 @@
 # Streamlined NTRU Prime
----
 
 [![Crates.io](https://img.shields.io/crates/v/streamlined-ntru-prime.svg)](https://crates.io/crates/streamlined-ntru-prime) [![Build Status](https://travis-ci.com/MitchellBerry/Streamlined-NTRU-Prime.svg?branch=master)](https://travis-ci.com/MitchellBerry/Streamlined-NTRU-Prime) ![Crates.io](https://img.shields.io/crates/l/rustc-serialize.svg)
 [![dependency status](https://deps.rs/crate/streamlined-ntru-prime/0.1.2/status.svg)](https://deps.rs/crate/streamlined-ntru-prime/0.1.2)
@@ -31,7 +30,6 @@ Please read the [warnings](#warnings) before use.
 | Shared Key  	|   32  	|
 
 ## Installation
----
 
 Add as a dependency to cargo.toml
 ```rust
@@ -40,7 +38,6 @@ streamlined_ntru_prime = "0.1.0"
 ```
 
 ## Usage
----
 
 ```rust
 use streamlined_ntru_prime::*;
@@ -56,7 +53,6 @@ let shared_secret = decapsulate(cipher_text, private_key).expect("Decapsulation 
 ```
 
 ## Testing 
----
 To reduce compile time and size, testing is an optional feature.
 ```shell
 # Testing
@@ -84,7 +80,6 @@ test key_gen_bench     ... bench:  16,914,970 ns/iter (+/- 278,949)
 ```
 
 ## Warnings
----
 
 #### Implementation 
 This implementation has not undergone any security auditing and while care has been taken no guarantees can be made for either correctness or the constant time running of the underlying functions at compile time. **Please use at your own risk.**
