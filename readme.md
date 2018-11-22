@@ -2,7 +2,7 @@
 ---
 
 [![Crates.io](https://img.shields.io/crates/v/streamlined-ntru-prime.svg)](https://crates.io/crates/streamlined-ntru-prime) [![Build Status](https://travis-ci.com/MitchellBerry/Streamlined-NTRU-Prime.svg?branch=master)](https://travis-ci.com/MitchellBerry/Streamlined-NTRU-Prime) ![Crates.io](https://img.shields.io/crates/l/rustc-serialize.svg)
-[![dependency status](https://deps.rs/crate/streamlined-ntru-prime/0.1.1/status.svg)](https://deps.rs/crate/streamlined-ntru-prime/0.1.1)
+[![dependency status](https://deps.rs/crate/streamlined-ntru-prime/0.1.2/status.svg)](https://deps.rs/crate/streamlined-ntru-prime/0.1.2)
 
 A rust implementation of Streamlined NTRU Prime 4591<sup>761</sup>
 
