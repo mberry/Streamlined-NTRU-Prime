@@ -1,12 +1,12 @@
 [package]
 name = "streamlined-ntru-prime"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["MitchellBerry <mitchellberry@protonmail.com>"]
 license = "MIT OR Apache-2.0"
 keywords = ["cryptography", "hashing", "bcrypt", "post-quantum"]
 description = "Rust implementation of the Streamline NTRU Prime algorithm" 
 repository = "https://github.com/MitchellBerry/streamlined-ntru-prime"
-documentation = "https://docs.rs/crate/streamlined-ntru-prime/0.1.0"
+documentation = "https://docs.rs/crate/streamlined-ntru-prime/0.1.1"
 categories = ["algorithms", "cryptography"]
 readme = "readme.md"
 
