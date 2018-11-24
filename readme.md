@@ -34,7 +34,7 @@ Please read the [warnings](#warnings) before use.
 Add as a dependency to cargo.toml
 ```rust
 [dependencies]
-streamlined_ntru_prime = "0.1.0"
+streamlined_ntru_prime = "0.1.2"
 ```
 
 ## Usage
