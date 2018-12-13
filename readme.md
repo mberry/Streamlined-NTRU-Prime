@@ -82,7 +82,7 @@ test key_gen_bench     ... bench:  16,914,970 ns/iter (+/- 278,949)
 ## Warnings
 
 #### Implementation 
-This implementation has not undergone any security auditing and while care has been taken no guarantees can be made for either correctness or the constant time running of the underlying functions at compile time. **Please use at your own risk.**
+This implementation has not undergone any security auditing and while care has been taken no guarantees can be made for either correctness or the constant time running of the underlying functions. **Please use at your own risk.**
 
 #### Algorithm
 
