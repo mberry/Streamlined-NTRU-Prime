@@ -46,12 +46,12 @@ use streamlined_ntru_prime::*;
 let (public_key, private_key) = generate_key();
 
 // Encapsulation
-let (cipher_text, ecapsulated_shared_secret) = encapsulate(public_key);
+let (cipher_text, encapsulated_shared_secret) = encapsulate(public_key);
 
 // Decapsulation
 let decapsulated_shared_secret = decapsulate(cipher_text, private_key).expect("Decapsulation failure");
 
-assert_eq!(ecapsulated_shared_secret, decapsulated_shared_secret);
+assert_eq!(encapsulated_shared_secret, decapsulated_shared_secret);
 ```
 
 ## Testing 
