@@ -31,7 +31,7 @@ Please read the [warnings](#warnings) before use.
 
 ## Installation
 
-Add as a dependency to cargo.toml
+Add to your cargo.toml file
 ```rust
 [dependencies]
 streamlined_ntru_prime = "0.1.2"
@@ -46,10 +46,12 @@ use streamlined_ntru_prime::*;
 let (public_key, private_key) = generate_key();
 
 // Encapsulation
-let (cipher_text, shared_secret) = encapsulate(public_key);
+let (cipher_text, ecapsulated_shared_secret) = encapsulate(public_key);
 
 // Decapsulation
-let shared_secret = decapsulate(cipher_text, private_key).expect("Decapsulation failure")
+let decapsulated_shared_secret = decapsulate(cipher_text, private_key).expect("Decapsulation failure");
+
+assert_eq!(ecapsulated_shared_secret, decapsulated_shared_secret);
 ```
 
 ## Testing 
