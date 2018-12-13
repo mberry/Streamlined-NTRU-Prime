@@ -67,7 +67,7 @@ Full output of generated and expected values can be shown optionally.
 cargo test --features testing -- --nocapture
 ```
 
-A json file of 100 KATs was generated from the sage implementation found [here](src/tests/kat-generator.sage).
+A json file of 100 KATs was generated from the sage implementation found [here](https://github.com/MitchellBerry/Streamlined-NTRU-Prime/blob/master/tests/kat-generator.sage).
 
 #### Current Benchmarks
 
