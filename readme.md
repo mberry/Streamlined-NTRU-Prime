@@ -11,7 +11,7 @@ Don't use this library.
 
 Bringing it into line with the current NTRUPrime is an aspirational todo.
 
-~~~~
+----
 
 A rust implementation of Streamlined NTRU Prime 4591<sup>761</sup>
 
