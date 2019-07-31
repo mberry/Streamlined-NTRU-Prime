@@ -3,6 +3,16 @@
 [![Crates.io](https://img.shields.io/crates/v/streamlined-ntru-prime.svg)](https://crates.io/crates/streamlined-ntru-prime) [![Build Status](https://travis-ci.com/MitchellBerry/Streamlined-NTRU-Prime.svg?branch=master)](https://travis-ci.com/MitchellBerry/Streamlined-NTRU-Prime) ![Crates.io](https://img.shields.io/crates/l/rustc-serialize.svg)
 [![dependency status](https://deps.rs/crate/streamlined-ntru-prime/0.1.2/status.svg)](https://deps.rs/crate/streamlined-ntru-prime/0.1.2)
 
+## Note
+
+This code is based on the first round submission and outdated. The C codebase has been widely refactored and even includes variable names now.
+
+Don't use this library.
+
+Bringing it into line with the current NTRUPrime is an aspirational todo.
+
+~~~~
+
 A rust implementation of Streamlined NTRU Prime 4591<sup>761</sup>
 
 NTRU Prime is a lattice based cryptosystem aiming to improve the security of lattice schemes at minimal cost. It is thought to be resistant to quantum computing advances, in particular Shor's algorithm and is an entrant in NIST's Post Quantum Cryptography competition[<sup>[1]</sup>](https://csrc.nist.gov/Projects/Post-Quantum-Cryptography). 
