@@ -3,7 +3,7 @@
 [![Crates.io](https://img.shields.io/crates/v/streamlined-ntru-prime.svg)](https://crates.io/crates/streamlined-ntru-prime) [![Build Status](https://travis-ci.com/MitchellBerry/Streamlined-NTRU-Prime.svg?branch=master)](https://travis-ci.com/MitchellBerry/Streamlined-NTRU-Prime) ![Crates.io](https://img.shields.io/crates/l/rustc-serialize.svg)
 [![dependency status](https://deps.rs/crate/streamlined-ntru-prime/0.1.2/status.svg)](https://deps.rs/crate/streamlined-ntru-prime/0.1.2)
 
-## Note
+## Update warning 
 
 This code is based on the first round submission and outdated. The C codebase has been widely refactored and even includes variable names now.
 
