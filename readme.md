@@ -5,11 +5,11 @@
 
 ## Update warning 
 
-This code is based on the first round submission and outdated. The C codebase has been widely refactored and even includes variable names now.
+This code is based on the first round submission and outdated. The C codebase has been widely refactored and even includes variable names now which seems very out of step with general academic code style guidelines.
 
 Don't use this library.
 
-Bringing it into line with the current NTRUPrime is an aspirational todo.
+Bringing it into line with the current NTRUPrime is an aspirational todo. Probably will wait until the NIST Post-Quantum competition is finished. 
 
 ----
 
