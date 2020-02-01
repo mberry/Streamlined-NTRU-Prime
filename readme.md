@@ -5,9 +5,9 @@
 
 ## Update warning 
 
-This code is based on the first round submission and outdated. The C codebase has been widely refactored and even includes variable names now which seems very out of step with general academic code style guidelines.
+This code is based on the first round submission and outdated. The C codebase has been widely refactored and keysizes have been modified.
 
-Don't use this library.
+Don't use this library in production.
 
 Bringing it into line with the current NTRUPrime is an aspirational todo. Probably will wait until the NIST Post-Quantum competition is finished. 
 
@@ -63,23 +63,6 @@ let decapsulated_shared_secret = decapsulate(cipher_text, private_key).expect("D
 
 assert_eq!(encapsulated_shared_secret, decapsulated_shared_secret);
 ```
-
-## Testing 
-To reduce compile time and size, testing is an optional feature.
-```shell
-# Testing
-cargo test --features testing
-
-# Benchmarking
-cargo bench --features testing
-```
-
-Full output of generated and expected values can be shown optionally.
-```shell
-cargo test --features testing -- --nocapture
-```
-
-A json file of 100 KATs was generated from the sage implementation found [here](https://raw.githubusercontent.com/MitchellBerry/Streamlined-NTRU-Prime/master/tests/kat-generator.sage).
 
 #### Current Benchmarks
 
