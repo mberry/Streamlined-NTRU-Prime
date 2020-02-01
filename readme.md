@@ -23,7 +23,7 @@ Please read the [warnings](#warnings) before use.
 
  Contributions welcome. SIMD especially. 
  
- WASM is functional on a seperate branch and not in master.
+ WASM functionality has not been pushed to crates yet and may never be given the library is outdated.
  
 
 #### Parameter set:
