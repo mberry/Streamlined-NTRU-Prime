@@ -5,7 +5,7 @@
 
 ## Update warning 
 
-This code is based on the first round submission and outdated. The C codebase has been widely refactored and keysizes have been modified.
+This code is based on the first round submission and outdated. The C codebase has been widely refactored and multiple parameter sets are now available. This library is similar to the current second round sntrup761 submission.
 
 Don't use this library in production.
 
