@@ -21,7 +21,9 @@ Please read the [warnings](#warnings) before use.
 
  The algorithm was authored by Daniel J. Bernstein, Chitchanok Chuengsatiansup, Tanja Lange & Christine van Vredendaal. 
 
- Contributions welcome. SIMD or WASM development especially.
+ Contributions welcome. SIMD especially. 
+ 
+ WASM is functional on a seperate branch and not in master.
  
 
 #### Parameter set:
